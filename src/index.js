@@ -1,6 +1,6 @@
 import './index.scss';
 import {colors,ComplexCustomOverlay} from './icon';
-import data from '../source/data/index.json';
+import data from '../source/data/2017_10_16.json';
 import './legend';
 import Filter from './filter';
 import * as Util from './util';
