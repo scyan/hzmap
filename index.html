@@ -1,0 +1,24 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+        <link rel="stylesheet" href="assets/index.css">
+    </head>
+    <body>
+        <div class="check">
+            <input type="checkbox" name="purpose" value="住宅" checked/> 住宅
+            <input type="checkbox" name="purpose" value="商住" checked/> 商住
+            <input type="checkbox" name="purpose" value="写字楼" checked/> 写字楼
+            <input type="checkbox" name="purpose" value="商铺" checked/> 商铺
+        </div>
+        <div class="search"><input id="search" class="search-content"/><button class="search-btn" id="search-btn">搜索</button></div>
+	  	<div id="container"></div>
+        <div class="legend"></div>
+	  	<canvas id="canvas" width="20" height="20"></canvas>
+        <script src="//api.map.baidu.com/api?v=2.0&ak=azjTkqyD1ve7H4zAD0KUqytAnIhQOl3w&s=1"></script>
+        <script src="assets/index.js"></script>
+    </body>
+    </html>
