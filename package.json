@@ -7,8 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --devtool eval-source-map --progress --colors --hot --inline --open --port 9000",
     "spider": "node ./source/spider.js",
-    "correction":"node ./source/correction.js"
-
+    "test": "node ./source/spider_test.js",
+    "trans": "node ./source/translate.js",
+    "main": "node ./source/index.js",
+    "correction": "node ./source/correction.js"
   },
   "author": "",
   "license": "ISC",

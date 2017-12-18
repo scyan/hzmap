@@ -5,9 +5,8 @@ var superagent = require('superagent');
 var async = require("async");
 var fs = require("fs");
 var today= new Date();
-var fileName=__dirname+'/data/'+today.getFullYear()+'_'+(today.getMonth()+1)+'_'+today.getDate()+'.json';
-fs.open(fileName,"w+",function(err,fd){
-	console.log(err,fd)
+var fileName=__dirname+'/data/'+today.getFullYear()+'_'+(today.getMonth()+1)+'_'+today.getDate()+'_baidu'+'.json';
+fs.open(fileName,"w",function(err,fd){
 	var ws = fs.createWriteStream(fileName);
 
 	// var ws = fs.createWriteStream('./data/index.json');
@@ -53,6 +52,7 @@ fs.open(fileName,"w+",function(err,fd){
 			}else{
 				console.log('has')
 				str+=JSON.stringify(data.hit)+',';
+				console.log(data.hit)
 				ws.write(str);
 				list=list.concat(data.hit);
 				callback(null,data.hit)
