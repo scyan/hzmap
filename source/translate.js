@@ -1,7 +1,7 @@
 var superagent = require('superagent');
 const agent = superagent.agent();
 var fs = require("fs");
-
+var clean = require('./clean');
 var main = function(sourceFile,targetFile){
 
 	fs.open(targetFile,"w",function(err,fd){
@@ -13,7 +13,7 @@ var main = function(sourceFile,targetFile){
 		     return;
 		    }
 		    var newArr=[]
-
+		    console.log(pages,'.........')
 		    pages=JSON.parse(pages);
 		    pages.map((page,j)=>{
 		    	page.map((estate,i)=>{
@@ -31,12 +31,19 @@ var main = function(sourceFile,targetFile){
 			if(first){
 				ws.write('[');
 			}
-			targetArr.push(sourceArr.pop())
+			let target = sourceArr.pop();
+			if(!target.y||!target.x){
+				trans(sourceArr);
+				return ;
+			}
+			targetArr.push(target)
 			//接口每次最多只能转三个坐标
 			if(targetArr.length>=3||sourceArr.length==0){
 				var locationArr=[];
 				targetArr.map((estate,i)=>{
-					locationArr.push(estate.y.slice(0,9)+','+estate.x.slice(0,10));
+					
+					locationArr.push(estate.y.slice(0,9)+','+estate.x.slice(0,10));					
+					
 				})
 				
 
@@ -51,11 +58,12 @@ var main = function(sourceFile,targetFile){
 						return ;
 					}
 					var locations=res.body.locations;
+					console.log(locations)
 					var str='';
 					targetArr.map((estate,i)=>{
 						estate.x=locations[i].lng;
 						estate.y=locations[i].lat;
-						console.log(estate.x,estate.y)
+						estate = clean(estate);
 						str+=JSON.stringify(estate)+',';
 					})
 					targetArr=[]

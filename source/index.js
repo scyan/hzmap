@@ -7,7 +7,9 @@ let getFileName = function(city){
 		target: __dirname+'/data/'+today.getFullYear()+'_'+(today.getMonth()+1)+'_'+today.getDate()+'_'+city+'_tx'+'.json'
 	}
 }
-const fileNames = getFileName('sz');
-spider(fileNames.source).then((res)=>{
-	trans(fileNames.source,fileNames.target);	
-});
+const city='sh';
+const fileNames = getFileName(city);
+// spider(fileNames.source,city).then((res)=>{
+// 	trans(fileNames.source,fileNames.target);	
+// });
+trans(fileNames.source,fileNames.target);	
